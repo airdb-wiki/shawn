@@ -7,13 +7,15 @@ Description: By using _telnet_ command, we can know certain port's status. As a 
 [https://www.cnblogs.com/hapjin/p/5367429.html](https://www.cnblogs.com/hapjin/p/5367429.html)
 
 For programs listen to **0.0.0.0** in wsl2, win10 can be accessed directly through localhost:port. Therefore we have to set bind address equal to 0.0.0.0 on hugo
->hugo server --bind=0.0.0.0 --port=1313 --minify --theme book 
+
+    hugo server --bind=0.0.0.0 --port=1313 --minify --theme book 
 
 Reason: The default address of localhost is Loopback address **127.0.0.1**. It can only be accessed by local machine. So if we want to access wsl2 address from other consoles, we have to replace localhost in /etc/hosts.
 
-By adding new rule to hugo Makefile, type `_make win_` to create local blog on wsl2 that can be accessed on other machines
-> wsl win windows:  
->	hugo server --bind=0.0.0.0 --port=1313 --minify --theme book  
+By adding new rule to hugo Makefile, type `make win` to create local blog on wsl2 that can be accessed on other machines
+
+    wsl win windows:  
+    hugo server --bind=0.0.0.0 --port=1313 --minify --theme book  
 
 # 2.Port depolyed at 0:0:0:0 can't be accessed from Windows. (Solved)
 
@@ -22,7 +24,7 @@ Description: Almost the same with **#problem 1**, but Spring is running at 0:0:0
 ### ref:
 >[https://github.com/microsoft/WSL/discussions/2471](https://github.com/microsoft/WSL/discussions/2471)
 
-Using `**wsl --shutdown**` solved this problem, and we can also handle this by replacing localhost into the ip address of etho from **ip addr**(for some unknown reasons, the speed is way faster than using localhost)
+Using `wsl --shutdown` solved this problem, and we can also handle this by replacing localhost into the ip address of etho from **ip addr**(for some unknown reasons, the speed is way faster than using localhost)
 
 
 # 3.The connection from Windows to MySQL in WSL2 failed(Solved)
